@@ -10,3 +10,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@layer components {
+  .match-contract:after {
+    content: '';
+    @apply border bg-gray-300 absolute w-[1px] top-4 bottom-4 right-0;
+  }
+
+  .match-contract:last-child:after {
+    @apply hidden;
+  }
+}
+

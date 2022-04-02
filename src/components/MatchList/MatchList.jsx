@@ -6,8 +6,12 @@ const MatchList = ({ matches }) => {
   return matches?.length > 0 && matches?.map((match) => <MatchCard {...match} />);
 };
 
-MatchList.defaultProps = {};
+MatchList.defaultProps = {
+  matches: [],
+};
 
-MatchList.propTypes = {};
+MatchList.propTypes = {
+  matches: PropTypes.array,
+};
 
 export default MatchList;
