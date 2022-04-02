@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "parser": "@babel/eslint-parser",
+  "settings": {
+    "react": {
+      "version": "detect",
+    },
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "requireConfigFile": false,
+    "allowImportExportEverywhere": false,
+    "ecmaFeatures": {
+      "globalReturn": false,
+      "jsx": true,
+    },
+  },
+  "extends": ["plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error", { "singleQuote": true, "endOfLine": "auto" }],
+    "jsx-quotes": ["error", "prefer-single"],
+  }
+}
