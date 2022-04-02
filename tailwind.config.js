@@ -9,7 +9,6 @@ module.exports = {
   theme: {
     fontFamily: {
       body: ['Roboto', 'sans-serif'],
-      material: ['Material Icons', 'sans-serif'],
     },
     container: {
       center: true,
@@ -36,6 +35,9 @@ module.exports = {
         },
         purple: {
           100: '#5258cc',
+        },
+        grey: {
+          100: '#F7F7F7',
         },
       },
     },
