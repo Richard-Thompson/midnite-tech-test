@@ -38,6 +38,13 @@ module.exports = {
         },
         grey: {
           100: '#F7F7F7',
+          500: '#6C757D',
+        },
+        yellow: {
+          100: '#F8F2DF',
+        },
+        orange: {
+          100: '#FAAD24',
         },
       },
     },

@@ -20,5 +20,9 @@ body {
   .match-contract:last-child:after {
     @apply hidden;
   }
+
+	.grey-border {
+		@apply border border-gray-300;
+	}
 }
 
