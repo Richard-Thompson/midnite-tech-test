@@ -2,5 +2,6 @@
 	"[javascript]": {
 		"editor.formatOnPaste": false,
 		"editor.formatOnSave": false,
+		
 	},
 }

@@ -3,12 +3,12 @@
   "parser": "@babel/eslint-parser",
   "settings": {
     "react": {
-      "version": "detect",
-    },
+      "version": "detect"
+    }
   },
   "env": {
     "browser": true,
-    "es6": true,
+    "es6": true
   },
   "parserOptions": {
     "sourceType": "module",
@@ -16,13 +16,13 @@
     "allowImportExportEverywhere": false,
     "ecmaFeatures": {
       "globalReturn": false,
-      "jsx": true,
-    },
+      "jsx": true
+    }
   },
   "extends": ["plugin:prettier/recommended"],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true, "endOfLine": "auto" }],
-    "jsx-quotes": ["error", "prefer-single"],
+    "jsx-quotes": ["error", "prefer-single"]
   }
 }

@@ -17,7 +17,6 @@ const BetSlipForm = ({ placedBets, removeBet, resetPlacedBets }) => {
   const onChange = (event, setState) => setState(event?.target?.value);
 
   const handleChangeBonus = () => {
-    console.log({ bonusChecked });
     if (!bonusChecked) {
       setTotalOdds((oldOdds) => Number((oldOdds * 1.5).toFixed(2)));
     } else {
@@ -27,7 +26,6 @@ const BetSlipForm = ({ placedBets, removeBet, resetPlacedBets }) => {
   };
 
   useEffect(() => {
-    console.log({ cookies: Cookies.get('previousBonusApplied') });
     if (Cookies.get('previousBonusApplied')) {
       setShowBonus(false);
     }
@@ -42,7 +40,6 @@ const BetSlipForm = ({ placedBets, removeBet, resetPlacedBets }) => {
       }
       return total;
     }, 0);
-    console.log({ odds });
     setTotalOdds(Number(odds).toFixed(2));
   }, [placedBets]);
 
@@ -61,17 +58,20 @@ const BetSlipForm = ({ placedBets, removeBet, resetPlacedBets }) => {
   return (
     <form
       onSubmit={(event) => {
-        console.log({ event });
         event.preventDefault();
         resetPlacedBets();
         setTotalStake('');
         setBonusChecked(false);
         setShowMessage(true);
-        Cookies.set('previousBonusApplied', true);
+        if (bonusChecked) {
+          Cookies.set('previousBonusApplied', true);
+        }
       }}
       className='grey-border my-8 ml-8 top-20 sticky rounded-xl'
     >
-      <p className='grey-border rounded-t-xl p-3 bg-grey-100'>Accumulator Betslip</p>
+      <p className='border-b border-grey-300 rounded-t-xl p-3 bg-grey-100'>
+        Accumulator Betslip
+      </p>
 
       {placedBets.length > 0 ? (
         <div className='p-3 h-full overflow-auto max-h-[40vh]'>
@@ -92,8 +92,8 @@ const BetSlipForm = ({ placedBets, removeBet, resetPlacedBets }) => {
           <span className='text-gray-400'>Select a match to place a bet on...</span>
         </div>
       )}
-      <div className='p-3 bg-grey-100 rounded-b-xl'>
-        <div className='flex flex-row justify-between items-center p-2'>
+      <div className='p-3 bg-grey-100 rounded-b-xl border-t border-grey-300'>
+        <div className='flex flex-row justify-between items-center '>
           <label className='font-extrabold' htmlFor='total-stake'>
             Total Stake
           </label>
@@ -112,8 +112,8 @@ const BetSlipForm = ({ placedBets, removeBet, resetPlacedBets }) => {
             />
           </div>
         </div>
-        {totalStake && showBonus && (
-          <div className='mb-4 pb-2 pt-2 ml-2 mr-2 flex items-center bg-yellow-100 border-y border-gray-300'>
+        {showBonus && (
+          <div className=' pb-4 pt-2 flex items-center bg-yellow-100 border-y border-gray-300'>
             <input
               type='checkbox'
               id='check-box'
@@ -135,14 +135,14 @@ const BetSlipForm = ({ placedBets, removeBet, resetPlacedBets }) => {
             </label>
           </div>
         )}
-        {totalOdds > 0 && (
-          <div className='pb-2 pt-2 ml-2 mr-2 flex flex-row justify-between border-y border-grey-300'>
+        {totalOdds >= 0 && (
+          <div className='pb-2 pt-2 flex flex-row justify-between border-b border-grey-300'>
             <span className='font-extrabold'>{`Total Odds:`}</span>
             <span className='max-w-[60%] w-full block'>{`  ${totalOdds}`}</span>
           </div>
         )}
-        {returnValue > 0 && (
-          <div className='pb-2 pt-2 ml-2 mr-2 mb-4 flex flex-row justify-between  border-y border-grey-300'>
+        {returnValue >= 0 && (
+          <div className='pb-2 pt-2 mb-4 flex flex-row justify-between  border-b border-grey-300'>
             <span className='font-extrabold'>{`To Return:`}</span>
             <span className='max-w-[60%] w-full block'>{`£ ${returnValue}`}</span>
           </div>

@@ -14,7 +14,6 @@ const App = () => {
 
   const fetchData = async () => {
     const { data } = await GET({ url: `${BASE_URL}${MATCHES_ENDPOINT}` });
-    console.log({ data });
     setMatches(data);
   };
 
@@ -22,9 +21,9 @@ const App = () => {
     // Initial Load
     fetchData();
     // live Update every 5 seconds
-    // setInterval(async () => {
-    //   await fetchData();
-    // }, 5000);
+    setInterval(async () => {
+      await fetchData();
+    }, 5000);
   }, []);
 
   useEffect(() => {
