@@ -40,7 +40,11 @@ const BetSlipForm = ({ placedBets, removeBet, resetPlacedBets }) => {
       }
       return total;
     }, 0);
-    setTotalOdds(Number(odds).toFixed(2));
+    if (bonusChecked) {
+      setTotalOdds((Number(odds) * 1.5).toFixed(2));
+    } else {
+      setTotalOdds(Number(odds).toFixed(2));
+    }
   }, [placedBets]);
 
   useEffect(() => {
