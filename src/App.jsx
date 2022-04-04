@@ -88,7 +88,11 @@ const App = () => {
       <Header />
       <main className='flex flex-col lg:flex-row container'>
         <div className='w-full lg:w-[60%]'>
-          <MatchList {...cardlistProps} />
+          {matches?.length > 0 ? (
+            <MatchList {...cardlistProps} />
+          ) : (
+            <p className='text-grey-400'>Loading ...</p>
+          )}
         </div>
         <div className='w-full lg:w-[40%]'>
           <BetSlipForm {...betSlipFormProps} />
